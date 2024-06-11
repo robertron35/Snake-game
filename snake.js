@@ -49,7 +49,7 @@ function Snake(){
         }
         this.y = (this.y+this.speedy*scl)%height;
         if(this.y<0){
-            this.y=width;
+            this.y=height;
         }
 
     }
