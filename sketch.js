@@ -2,6 +2,7 @@ var snake;
 var scl = 20;
 var food;
 var lastPress;
+var total = 0;
 
 function setup(){ 
     let canvas = createCanvas(300, 500);
@@ -32,28 +33,28 @@ function setup(){
 }
 
 function simulateKeyPressUP() {
-    if(lastPress != 'D'){
+    if(lastPress != 'D' || total == 0){
         lastPress = 'U';
         snake.dir(0, -1);
     }
 }
 
 function simulateKeyPressDOWN() {
-    if(lastPress != 'U'){
+    if(lastPress != 'U' || total == 0){
         lastPress = 'D';
         snake.dir(0, 1);
     }
 }
 
 function simulateKeyPressRIGHT() {
-    if(lastPress != 'L'){
+    if(lastPress != 'L' || total == 0){
         lastPress = 'R';
         snake.dir(1, 0);
     }
 }
 
 function simulateKeyPressLEFT() {
-    if(lastPress != 'R'){
+    if(lastPress != 'R' || total == 0){
         lastPress = 'L';
         snake.dir(-1, 0);
     }
@@ -76,25 +77,26 @@ function draw(){
     snake.lose();
     snake.update();
     snake.show();
+    total = snake.total;
 
     fill(255, 0, 100);
     rect(food.x, food.y, scl, scl);
 }
 
 function keyPressed(){
-    if(keyCode == UP_ARROW && lastPress != 'D'){
+    if(keyCode == UP_ARROW && (lastPress != 'D' || total == 0)){
         lastPress = 'U';
         snake.dir(0, -1);
     }
-    else if(keyCode == DOWN_ARROW && lastPress != 'U'){
+    else if(keyCode == DOWN_ARROW && (lastPress != 'U' || total == 0)){
         lastPress = 'D';
         snake.dir(0, 1);
     }
-    else if(keyCode == RIGHT_ARROW && lastPress != 'L'){
+    else if(keyCode == RIGHT_ARROW && (lastPress != 'L' || total == 0)){
         lastPress = 'R';
         snake.dir(1, 0);
     }
-    else if(keyCode == LEFT_ARROW && lastPress != 'R'){
+    else if(keyCode == LEFT_ARROW && (lastPress != 'R' || total == 0)){
         lastPress = 'L';
         snake.dir(-1, 0);
     }
