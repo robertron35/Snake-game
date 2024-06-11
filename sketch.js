@@ -4,8 +4,8 @@ var food;
 var lastPress;
 
 function setup(){ 
-    let canvas = createCanvas(600, 600);
-    canvas.position((windowWidth - width) / 2, (windowHeight - height -200) / 2);
+    let canvas = createCanvas(300, 600);
+    canvas.position((windowWidth - width + 30) / 2, (windowHeight - height -200) / 2);
     snake = new Snake();
     frameRate(10);
     pickLocation();
